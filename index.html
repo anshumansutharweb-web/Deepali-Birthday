@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday Deepali ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top,#65265d,#21102f 60%,#10091d);color:#fff1f8;font-family:Georgia,serif;text-align:center;overflow-x:hidden}
+section{min-height:100vh;padding:65px 20px;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative}
+h1{font-size:clamp(42px,9vw,76px);margin:18px 0;background:linear-gradient(90deg,#fff,#ff9bce,#d9b2ff);color:transparent;background-clip:text}
+h2{font-size:clamp(29px,6vw,48px)}
+p{line-height:1.9;max-width:620px;color:#f1d9ee;font-size:17px}
+button{background:linear-gradient(100deg,#f34e9d,#a56afa);color:white;border:0;border-radius:40px;padding:15px 24px;font-size:16px;font-weight:bold;cursor:pointer;box-shadow:0 0 28px #ff65b855;margin:12px}
+button:hover{transform:scale(1.04)}
+.photo-frame{width:min(330px,85vw);padding:9px;border-radius:180px 180px 35px 35px;background:linear-gradient(135deg,#ffe1a8,#ff77c4,#b99aff);box-shadow:0 0 45px #f76bc780;animation:float 4s ease-in-out infinite}
+.photo-frame img{width:100%;height:390px;object-fit:cover;object-position:center 30%;border-radius:175px 175px 28px 28px;display:block}
+.hidden{display:none!important}
+.heart{font-size:70px;color:#ff8fc9;text-shadow:0 0 35px #ff4fa8;animation:beat 1.3s infinite}
+.card{max-width:680px;padding:30px 25px;border:1px solid #ffb4e455;border-radius:25px;background:#ffffff0d;box-shadow:0 15px 60px #0004}
+.signature{color:#ffafd8;font-size:25px}
+.spark{position:fixed;top:-30px;pointer-events:none;z-index:5;animation:fall 6s linear forwards}
+footer{font:12px Arial;color:#cbb0d5;margin-top:35px}
+@keyframes beat{50%{transform:scale(1.18)}}
+@keyframes float{50%{transform:translateY(-12px) rotate(1deg)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(500deg);opacity:0}}
+@media(max-width:500px){.photo-frame img{height:340px}section{padding:55px 17px}}
+</style>
+</head>
+<body>
+
+<section id="welcome">
+  <div class="heart">♥</div>
+  <p>A LITTLE SURPRISE MADE JUST FOR YOU</p>
+  <h1>Happy Birthday<br>Deepali!</h1>
+  <p>My world became more beautiful when you became a part of it. ❤️</p>
+  <button onclick="openSurprise()">Open Your Magical Surprise ✨</button>
+  <p>With all my love, Anshuman</p>
+</section>
+
+<section id="surprise" class="hidden">
+  <p>MY FAVOURITE PERSON IN THE WHOLE UNIVERSE</p>
+  <div class="photo-frame">
+    <img src="deepali-photo.jpeg" alt="Beautiful Deepali">
+  </div>
+  <h2>My Beautiful Deepali 🌹</h2>
+  <p>Your smile is my favourite sight, your happiness is my favourite wish, and being beside you is one of my greatest gifts.</p>
+  <button onclick="celebrate()">Make a Birthday Wish 🎂</button>
+  <p id="wish"></p>
+</section>
+
+<section>
+  <p>✧ A LETTER FROM MY HEART ✧</p>
+  <div class="card">
+    <h2>My Dearest Deepali 💌</h2>
+    <p>Happy Birthday, my love!</p>
+    <p>You make ordinary days special just by being you. Your smile brings warmth to my heart, and your presence makes life feel more beautiful.</p>
+    <p>On your birthday, I wish you endless happiness, good health, beautiful opportunities, peaceful days, and all the love you deserve.</p>
+    <p>I hope I can keep making you smile, standing beside you through every chapter, and giving you countless reasons to feel loved.</p>
+    <p>No matter how many birthdays we celebrate, I will always be grateful for you.</p>
+    <p class="signature">Forever yours,<br>Anshuman ❤️</p>
+  </div>
+</section>
+
+<section>
+  <div class="heart">♥</div>
+  <h2>You are my today,<br>my tomorrow, my always.</h2>
+  <p>Happy Birthday, Deepali. Today and every day, you are loved more than words can say.</p>
+  <button onclick="kiss()">A Thousand Kisses for You 💋</button>
+  <p id="final"></p>
+  <button onclick="music()">♫ Play / Pause Magical Music</button>
+  <footer>Made with love by Anshuman · 24 October 2026</footer>
+</section>
+
+<script>
+let audio, playing=false, timer;
+function openSurprise(){
+ document.getElementById('surprise').classList.remove('hidden');
+ document.getElementById('surprise').scrollIntoView({behavior:'smooth'});
+ shower(45);
+}
+function celebrate(){
+ document.getElementById('wish').textContent=
+ 'Close your eyes, make a wish, my love. May your dreams come true! ✨❤️';
+ shower(60);
+}
+function kiss(){
+ document.getElementById('final').textContent=
+ 'A thousand kisses, a million hugs, and all my love—today and always! ❤️❤️❤️';
+ shower(70);
+}
+function shower(n){
+ for(let i=0;i<n;i++){
+  let e=document.createElement('span');
+  e.className='spark';
+  e.textContent=['♥','✦','🌸','✨'][Math.floor(Math.random()*4)];
+  e.style.left=Math.random()*100+'vw';
+  e.style.fontSize=(12+Math.random()*22)+'px';
+  e.style.color=['#ff9bce','#e1b4ff','#ffe5b4'][Math.floor(Math.random()*3)];
+  e.style.animationDuration=(3+Math.random()*5)+'s';
+  document.body.appendChild(e);
+  setTimeout(()=>e.remove(),8500);
+ }
+}
+function music(){
+ if(!audio) audio=new(window.AudioContext||window.webkitAudioContext)();
+ if(audio.state==='suspended')audio.resume();
+ playing=!playing;
+ if(!playing){clearInterval(timer);return;}
+ const notes=[523.25,659.25,783.99,659.25,587.33,698.46,880,698.46];
+ let i=0;
+ function note(){
+  if(!playing)return;
+  let o=audio.createOscillator(),g=audio.createGain();
+  o.type='sine';o.frequency.value=notes[i++%notes.length];
+  g.gain.setValueAtTime(.0001,audio.currentTime);
+  g.gain.exponentialRampToValueAtTime(.07,audio.currentTime+.04);
+  g.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+.45);
+  o.connect(g);g.connect(audio.destination);
+  o.start();o.stop(audio.currentTime+.46);
+ }
+ note();timer=setInterval(note,480);
+}
+shower(18);
+</script>
+</body>
+</html>
